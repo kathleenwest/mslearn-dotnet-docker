@@ -1,6 +1,21 @@
 ﻿# Microsoft Learn eShopLite Microservices Demo
 
-## About
+<!-- vscode-markdown-toc -->
+* 1. [About](#About)
+* 2. [Docker Setup](#DockerSetup)
+* 3. [How to Run Locally](#HowtoRunLocally)
+* 4. [Notes](#Notes)
+* 5. [Content Security Policy (CSP) Issues](#ContentSecurityPolicyCSPIssues)
+	* 5.1. [Great Advice from AI on CSP Issues](#GreatAdvicefromAIonCSPIssues)
+* 6. [References](#References)
+
+<!-- vscode-markdown-toc-config
+	numbering=true
+	autoSave=true
+	/vscode-markdown-toc-config -->
+<!-- /vscode-markdown-toc -->
+
+##  1. <a name='About'></a>About
 
 This is a simple microservices demo with a frontend web app (razor) and backend web api (asp.net core). The frontend utilizes the Blazor WebAssembly script in the browser.
 
@@ -11,7 +26,7 @@ The backend web api simply delivers a Product listing and serves images for thos
 The frontend web app queries the backend web api for products, then displays each individual product record including an image.
 ![frontend demo screen capture](/images/frontenddemo.jpg)
 
-## Docker Setup 
+##  2. <a name='DockerSetup'></a>Docker Setup 
 
 There are two projects in the solution: Store (frontend) and Products (backend) that run as individual containers with distinct docker files.
 
@@ -45,7 +60,7 @@ services:
            - "32001:8080"
 ```
 
-## How to Run Locally 
+##  3. <a name='HowtoRunLocally'></a>How to Run Locally 
 
 First fork this project, then open up a terminal window in the root of your own repo directory. Download and install Docker Desktop (if needed). 
 
@@ -61,11 +76,11 @@ Verify the containers are runing in Docker Desktop and that you can view the fro
 
 ![docker desktop demo](/images/dockerdesktopdemo.jpg)
 
-## Notes
+##  4. <a name='Notes'></a>Notes
 
 This site only runs with http protocol. In the future, I plan on making a project tutorial for adding https capability with a trusted certificate.
 
-## Content Security Policy (CSP) Issues
+##  5. <a name='ContentSecurityPolicyCSPIssues'></a>Content Security Policy (CSP) Issues
 
 When loading the Products page in the web app, you may notice the page does not load or it says "Loading.." and stops. If you check the browser developer tools console window, you will probably see this error:
 
@@ -75,7 +90,7 @@ Refused to load the script 'http://localhost:32000/_framework/blazor.web.js' bec
 
 The quick fix for me was to disable my browser extensions and reload (I think it was the ad blocker). I asked Microsoft Copilot about this error and received that helpful hint and additional information. If you do not wish to disable your extensions, if you load the page incognito mode, it should work and allow you to verify the app is working. 
 
-### Great Advice from AI on CSP Issues
+###  5.1. <a name='GreatAdvicefromAIonCSPIssues'></a>Great Advice from AI on CSP Issues
 
 It seems that you are seeing a different Content Security Policy (CSP) directive in normal mode and incognito mode of your browser. This could be due to one of the following reasons:
 
@@ -93,7 +108,7 @@ Source: Conversation with Bing, 1/1/2024
 (5) Enable, Disable, or Force InPrivate Mode in Microsoft Edge Chromium. https://www.tenforums.com/tutorials/161967-enable-disable-force-inprivate-mode-microsoft-edge-chromium.html.
 (6) Browse in private - Computer - Google Chrome Help. https://support.google.com/chrome/answer/95464?hl=en&co=GENIE.Platform%3DDesktop.
 
-## References
+##  6. <a name='References'></a>References
 
 This project was spawned from from a Microsoft Learn tutorial project: [Build your first microservice with .NET](https://learn.microsoft.com/en-us/training/modules/dotnet-microservices/). However, I carved out a small portion of the tutorial repo code into my own repo and made some modifications and improvements to the docker setups. I created this README to easily explain and demo the setup of the project.
 
